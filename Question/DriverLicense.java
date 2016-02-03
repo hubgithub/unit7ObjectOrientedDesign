@@ -3,10 +3,10 @@ public class DriverLicense extends Card
 {
     /** description of instance variable x (add comment for each instance variable) */
     private int ex_year;
-
+    String name;
     public DriverLicense(String n, int year)
     {
-        super(n);
+        name = super(n);
         ex_year = year;
     }
     
