@@ -4,7 +4,7 @@ public class Billfold
 
     static Card card1;
     static Card card2;
-    
+    static int count_exCard = 0;
     public static void addCard(Card new_card)
     {
         if(card1 == null)
@@ -31,6 +31,21 @@ public class Billfold
         }
         
         return str;
+    }
+    
+    public int getExpiredCardCount()
+    {
+        if(card1.isExpired)
+        {
+            count_exCard += 1;
+        }
+        
+        if(card2.isExpired)
+        {
+            count_exCard += 1;
+        }
+ 
+        return count_exCard;
     }
 
 
