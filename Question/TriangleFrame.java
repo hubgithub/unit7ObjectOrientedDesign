@@ -12,13 +12,16 @@ public class TriangleFrame
     
     private JFrame frame;
     private JPanel panel;
-    private T
+    private TriangleComponent tri;
     public TriangleFrame()
     {
         frame = new JFrame();
         panel = new JPanel();
         
-        panel.add()
+        //Add triangle component
+        // tri = new TriangleComponent();
+        //panel.add(tri); 
+        
         frame.setSize(WIDTH,HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);

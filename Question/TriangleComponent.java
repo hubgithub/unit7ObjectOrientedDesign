@@ -25,7 +25,6 @@ public class TriangleComponent extends JComponent
     public void paintComponent(Graphics g)
     {
         Graphics2D graph = (Graphics2D) g;
-        Line2D line = new Line2D();
         
         if(click_count == 1)
         {
@@ -33,13 +32,13 @@ public class TriangleComponent extends JComponent
         }
         else if(click_count == 2)
         {
-            line.Double(points[0][0],points[1][0],points[0][1],points[1][1]);
+            graph.draw(new Line2D(points[0][0],points[1][0],points[0][1],points[1][1]));
         }
         else if(click_count == 3)
         {
-            line.Double(points[0][0],points[1][0],points[0][1],points[1][1]);
-            line.Double(points[2][0],points[2][0],points[0][0],points[0][1]); 
-            line.Double(points[0][0],points[1][0],points[0][1],points[1][1]);
+            graph.draw(new Line2D.Double(points[0][0],points[1][0],points[0][1],points[1][1]));
+            graph.draw(new Line2D.Double(points[1][0],points[2][0],points[1][1],points[2][1])); 
+            graph.draw(new Line2D.Double(points[2][0],points[0][0],points[2][1],points[0][1]));
         }
         
         graph.draw(rect);
