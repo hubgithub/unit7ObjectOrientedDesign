@@ -34,27 +34,5 @@ public class TriangleFrame
         
     }
     
-    class Triangle_Listener implements MouseListener
-    {
-        
-        public void mousePressed(MouseEvent event)
-        {
-            int x = event.getX();
-            int y = event.getY();
-            
-            tri.addPoint(x,y);
-        }
-        
-        public void mouseReleased(MouseEvent event) {}
-        
-        public void mouseClicked(MouseEvent event) {}
-        
-        public void mouseEntered(MouseEvent event) {}
-        
-        public void mouseExited(MouseEvent event) {}
-        
-        
-        
-        
-    }
+
 }
