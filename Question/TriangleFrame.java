@@ -1,6 +1,7 @@
 import java.awt.Graphics2D;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,8 +20,8 @@ public class TriangleFrame
         panel = new JPanel();
         
         //Add triangle component
-        // tri = new TriangleComponent();
-        //panel.add(tri); 
+        tri = new TriangleComponent();
+        panel.add(tri); 
         
         frame.setSize(WIDTH,HEIGHT);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,6 +31,30 @@ public class TriangleFrame
     public static void main(String []args)
     {
         TriangleFrame triFrame = new TriangleFrame();
+        
+    }
+    
+    class Triangle_Listener implements MouseListener
+    {
+        
+        public void mousePressed(MouseEvent event)
+        {
+            int x = event.getX();
+            int y = event.getY();
+            
+            tri.addPoint(x,y);
+        }
+        
+        public void mouseReleased(MouseEvent event) {}
+        
+        public void mouseClicked(MouseEvent event) {}
+        
+        public void mouseEntered(MouseEvent event) {}
+        
+        public void mouseExited(MouseEvent event) {}
+        
+        
+        
         
     }
 }
