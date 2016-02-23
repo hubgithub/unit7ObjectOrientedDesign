@@ -26,6 +26,7 @@ public class IDCard extends Card
         return str;
     }
     
+    /**
     public boolean equals(Object other)
     {
         //first, check if this object and the other object are of the same class
@@ -39,8 +40,9 @@ public class IDCard extends Card
             boolean isEqual = super.equals(other);
             
             //third, check if the instance varibles of this object and the other object are equal
-            return isEqual && this.idNumber.equals(other.idNumber);
+            //return isEqual && this.idNumber.equals(other.idNumber);
         }
         return false;
     }
+    */
 }

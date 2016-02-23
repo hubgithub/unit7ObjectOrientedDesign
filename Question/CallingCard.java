@@ -8,7 +8,7 @@ public class CallingCard extends Card
     private String num;
     public CallingCard(String n, String number, String Pin)
     {
-        name = super(n);
+        //name = super(n);
         num = number;
         pin = Pin;
     }
@@ -16,7 +16,7 @@ public class CallingCard extends Card
     public String format()
     {
         String str = "";
-        str += name + " " + number + " " + pin;
+        //str += name + " " + number + " " + pin;
         
         return str;
         
