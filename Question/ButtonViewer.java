@@ -67,7 +67,7 @@ public class ButtonViewer
      {
         count++;
         
-        label.setText("Button" + event.getActionCommand() + " was clicked!");
+        label.setText("Button        " + event.getActionCommand() + "         was clicked!");
      }
     }
 }
