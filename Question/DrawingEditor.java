@@ -14,6 +14,7 @@ public class DrawingEditor extends JFrame
     /** description of instance variable x (add comment for each instance variable) */
     private final int WIDTH = 800;
     private final int HEIGHT = 800;
+    
     private ControlPanel controls;
     private DrawingPanel canvas;
 

@@ -24,17 +24,7 @@ public class TriangleFrame extends JFrame
         tri = new TriangleComponent();
         this.add(tri);
         
-<<<<<<< HEAD
-        MouseListener listener = new Triangle_Listener();
-        tri.addMouseListener(listener);
-        
-        
 
-=======
-        setSize(WIDTH,HEIGHT);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
->>>>>>> 208e5d7fcd2508c437082b078a6d254fd15e47a7
     }
 
     public static void main(String []args)

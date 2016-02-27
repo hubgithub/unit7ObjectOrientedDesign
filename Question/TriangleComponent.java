@@ -97,11 +97,7 @@ public class TriangleComponent extends JComponent
     {
         return click_count;
     }
-    
-    
-<<<<<<< HEAD
-    
-=======
+
     class Triangle_Listener implements MouseListener
     
     {
@@ -130,7 +126,7 @@ public class TriangleComponent extends JComponent
         
         
     }
->>>>>>> 208e5d7fcd2508c437082b078a6d254fd15e47a7
+
 
 }
 
