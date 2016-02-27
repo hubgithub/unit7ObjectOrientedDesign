@@ -3,6 +3,10 @@ import java.awt.Rectangle;
 import javax.swing.JComponent;
 import java.awt.Graphics;
 import java.awt.geom.Line2D;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Triangle Component
@@ -18,6 +22,7 @@ public class TriangleComponent extends JComponent
     private int click_count = 0;
     private Rectangle rect;
     
+
     /**
      * Construtor, create a point
      */
@@ -49,6 +54,7 @@ public class TriangleComponent extends JComponent
         }
         
         graph.draw(rect);
+        repaint();
         
     }
     
@@ -75,32 +81,12 @@ public class TriangleComponent extends JComponent
             click_count = 0;
         }
         click_count++;
+        
+        repaint();
     }
     
     
-    class Triangle_Listener implements MouseListener
-    {
-        
-        public void mousePressed(MouseEvent event)
-        {
-            int x = event.getX();
-            int y = event.getY();
-            
-            tri.addPoint(x,y);
-        }
-        
-        public void mouseReleased(MouseEvent event) {}
-        
-        public void mouseClicked(MouseEvent event) {}
-        
-        public void mouseEntered(MouseEvent event) {}
-        
-        public void mouseExited(MouseEvent event) {}
-        
-        
-        
-        
-    }
+    
 
 }
 

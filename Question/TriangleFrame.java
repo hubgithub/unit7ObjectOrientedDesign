@@ -6,7 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
-public class TriangleFrame
+public class TriangleFrame extends JFrame
 {
     private static final int WIDTH = 500;
     private static final int HEIGHT = 500;
@@ -23,14 +23,44 @@ public class TriangleFrame
         tri = new TriangleComponent();
         panel.add(tri); 
         
-        frame.setSize(WIDTH,HEIGHT);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setVisible(true);
+        MouseListener listener = new Triangle_Listener();
+        tri.addMouseListener(listener);
+        
+        
+
     }
 
     public static void main(String []args)
     {
         TriangleFrame triFrame = new TriangleFrame();
+        triFrame.setSize(WIDTH,HEIGHT);
+        triFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        triFrame.setVisible(true);
+        
+    }
+    
+    class Triangle_Listener implements MouseListener
+    {
+        
+        public void mousePressed(MouseEvent event)
+        {
+            int x = event.getX();
+            int y = event.getY();
+            
+            tri.addPoint(x,y);
+            
+        }
+        
+        public void mouseReleased(MouseEvent event) {}
+        
+        public void mouseClicked(MouseEvent event) {}
+        
+        public void mouseEntered(MouseEvent event) {}
+        
+        public void mouseExited(MouseEvent event) {}
+        
+        
+        
         
     }
     
