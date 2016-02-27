@@ -1,5 +1,7 @@
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
 import java.awt.Rectangle;
+import java.awt.event.MouseListener;
 import javax.swing.JComponent;
 import java.awt.Graphics;
 import java.awt.geom.Line2D;
@@ -29,6 +31,8 @@ public class TriangleComponent extends JComponent
     public TriangleComponent()
     {
         rect = new Rectangle(0,0,1,1);
+        
+        addMouseListener(new Triangle_Listener());
     }
     
     /**
@@ -36,6 +40,8 @@ public class TriangleComponent extends JComponent
      */
     public void paintComponent(Graphics g)
     {
+        super.paintComponent(g);
+        
         Graphics2D graph = (Graphics2D) g;
         
         if(click_count == 1)
@@ -44,24 +50,22 @@ public class TriangleComponent extends JComponent
         }
         else if(click_count == 2)
         {
-            graph.draw(new Line2D.Double(points[0][0],points[1][0],points[0][1],points[1][1]));
+            graph.draw(new Line2D.Double(points[0][0],points[0][1],points[1][0],points[1][1]));
         }
         else if(click_count == 3)
         {
-            graph.draw(new Line2D.Double(points[0][0],points[1][0],points[0][1],points[1][1]));
-            graph.draw(new Line2D.Double(points[1][0],points[2][0],points[1][1],points[2][1])); 
-            graph.draw(new Line2D.Double(points[2][0],points[0][0],points[2][1],points[0][1]));
+            graph.draw(new Line2D.Double(points[0][0],points[0][1],points[1][0],points[1][1]));
+            graph.draw(new Line2D.Double(points[1][0],points[1][1],points[2][0],points[2][1])); 
+            graph.draw(new Line2D.Double(points[2][0],points[2][1],points[0][0],points[0][1]));
         }
         
+        System.out.println(click_count);
         graph.draw(rect);
         repaint();
         
     }
     
-    public int getClick_count()
-    {
-        return click_count;
-    }
+
     
     /**
      * set the point location
@@ -76,17 +80,57 @@ public class TriangleComponent extends JComponent
         rect.setLocation(x,y);
         
         
-        if(click_count > 2)
+        if(click_count > 3)
         {
             click_count = 0;
         }
+        
+        
+        this.repaint();
+        
         click_count++;
         
         repaint();
     }
     
+        public int getClick_count()
+    {
+        return click_count;
+    }
     
     
+<<<<<<< HEAD
+    
+=======
+    class Triangle_Listener implements MouseListener
+    
+    {
+        
+        public void mousePressed(MouseEvent event)
+        {
+            int x = event.getX();
+            int y = event.getY();
+            if(click_count <= 3)
+            {    
+                
+                addPoint(x,y);
+            }
+            
+        }
+        
+        public void mouseReleased(MouseEvent event) {}
+        
+        public void mouseClicked(MouseEvent event) {}
+        
+        public void mouseEntered(MouseEvent event) {}
+        
+        public void mouseExited(MouseEvent event) {}
+        
+        
+        
+        
+    }
+>>>>>>> 208e5d7fcd2508c437082b078a6d254fd15e47a7
 
 }
 

@@ -1,4 +1,5 @@
 import java.awt.Graphics2D;
+import java.awt.Graphics;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.event.MouseListener;
@@ -16,18 +17,24 @@ public class TriangleFrame extends JFrame
     private TriangleComponent tri;
     public TriangleFrame()
     {
-        frame = new JFrame();
-        panel = new JPanel();
+
         
+
         //Add triangle component
         tri = new TriangleComponent();
-        panel.add(tri); 
+        this.add(tri);
         
+<<<<<<< HEAD
         MouseListener listener = new Triangle_Listener();
         tri.addMouseListener(listener);
         
         
 
+=======
+        setSize(WIDTH,HEIGHT);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setVisible(true);
+>>>>>>> 208e5d7fcd2508c437082b078a6d254fd15e47a7
     }
 
     public static void main(String []args)
@@ -63,6 +70,8 @@ public class TriangleFrame extends JFrame
         
         
     }
+    
+    
     
 
 }

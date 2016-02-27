@@ -35,12 +35,12 @@ public class Billfold
     
     public int getExpiredCardCount()
     {
-        if(card1.isExpired)
+        //if(card1.isExpired)
         {
             count_exCard += 1;
         }
         
-        if(card2.isExpired)
+        //if(card2.isExpired)
         {
             count_exCard += 1;
         }

@@ -6,7 +6,7 @@ public class DriverLicense extends Card
     String name;
     public DriverLicense(String n, int year)
     {
-        name = super(n);
+        //name = super(n);
         ex_year = year;
     }
     
@@ -22,7 +22,7 @@ public class DriverLicense extends Card
     public String format()
     {
         String str = "";
-        str += n + " " + year;
+        //str += n + " " + year;
         
         return str;
     }
