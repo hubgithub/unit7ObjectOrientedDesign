@@ -1,12 +1,12 @@
 import java.awt.Rectangle;
-
+import java.awt.geom.Point2D;
 /**
  * extends abstract class Shape
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Square extends Shapes
+public class Square extends Shape
 {
     
     private Rectangle rect;
