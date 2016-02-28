@@ -11,11 +11,10 @@ import java.awt.BorderLayout;
 import java.awt.Rectangle;
 
 /**
- * Write a description of class ControlPanel here.
  * 
  * extends JPanel
+ * Create buttons, and track of all mouse movement
  * 
- * three buttons to it: ?Pick Color,? ?Add Circle,? and ?Add Square.?
  * 
  * @author (Heng Li) 
  * @version (2-23-2016)
@@ -34,6 +33,8 @@ public class ControlPanel extends JPanel
 
     /**
      * Default constructor for objects of class ControlPanel
+     * Creat three buttons: Pick Color, Add Square, Add Circle
+     * after Pick Color a rectangle shows what color was chosen
      */
     public ControlPanel()
     {
@@ -61,9 +62,17 @@ public class ControlPanel extends JPanel
         
     }
     
+    /**
+     * ClickListener, implements ActionListener
+     * overide abstract method
+     * check which button was clicked
+     */
     class ClickListener implements ActionListener
     {
         
+        /**
+         * check which button was clicked and call DrawingPanel to act
+         */
         public void button_click(ActionEvent event)
         {
             //which button was cliked

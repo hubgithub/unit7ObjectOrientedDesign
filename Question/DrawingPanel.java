@@ -4,6 +4,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.awt.Shape;
 import javax.swing.JColorChooser;
@@ -12,19 +13,23 @@ import java.awt.Rectangle;
 
 
 /**
- * Write a description of class DrawingPanel here.
+ * Pick Color
+ * Drawing and paint all the shapes
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
 public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionListener
 {
-    /** description of instance variable x (add comment for each instance variable) */
+    
     private Color draw_color;
     ArrayList<Shape> shapes;
 
     /**
      * Default constructor for objects of class DrawingPanel
+     * initalize all the instance variables
+     * set background color to white
+     * set the canvas size
      */
     public DrawingPanel()
     {
@@ -37,6 +42,9 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
         
     }
     
+    /**
+     * pick a color
+     */
     public void pickColor()
     {
         JColorChooser chooser = new JColorChooser(draw_color);
@@ -45,21 +53,33 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
         
     }
     
+    /**
+     * create a new circle
+     */
     public void addCircle()
     {
         
     }
     
+    /**
+     * creat a new square
+     */
     public void addSquare()
     {
         
     }
     
+    /**
+     * paint the shape
+     */
     public void paintComponent(Graphics g)
     {
         
     }
     
+    /**
+     * return current color
+     */
     public Color getColor()
     {
         return draw_color;
