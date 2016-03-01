@@ -1,4 +1,4 @@
-//import java.awt.Shape;
+
 import java.awt.geom.Point2D;
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -8,7 +8,7 @@ import java.awt.Graphics2D;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Shape
+public abstract class Shape
 {
     // instance variables - replace the example below with your own
     private double radius;
@@ -67,7 +67,7 @@ public class Shape
     /**
      * check if a point is inside the shape
      */
-    public boolean isInside(Point2D.Double point)
+    public abstract boolean isInside(Point2D.Double point);
     {
         double x_negative = center.getX() - radius;
         double x_positive = center.getX() + radius;
@@ -86,39 +86,39 @@ public class Shape
         return true;
     }
     
-    /**
-     * check if the point is on the border of the shape
-     */
-    public boolean isOnBorder(Point2D.Double point)
-    {
-        double x_negative = center.getX() - radius;
-        double x_positive = center.getX() + radius;
-        
-        double y_negative = center.getY() - radius;
-        double y_positive = center.getY() + radius;
-        
-        double x = point.getX();
-        double y = point.getY();
-        if((x == x_negative || x == x_positive) && (y == y_negative || y == y_positive))
-        {
-            return true;
-        }
-        
-        return false;        
-        
-    }
+//     /**
+//      * check if the point is on the border of the shape
+//      */
+//     public boolean isOnBorder(Point2D.Double point)
+//     {
+//         double x_negative = center.getX() - radius;
+//         double x_positive = center.getX() + radius;
+//         
+//         double y_negative = center.getY() - radius;
+//         double y_positive = center.getY() + radius;
+//         
+//         double x = point.getX();
+//         double y = point.getY();
+//         if((x == x_negative || x == x_positive) && (y == y_negative || y == y_positive))
+//         {
+//             return true;
+//         }
+//         
+//         return false;        
+//         
+//     }
     
     /**
      * if filled is true: draw and fill the shape with color
      * else: draw the shape
      * 
      */
-    public void draw(Graphics2D g2, boolean filled)
+    public abstract void draw(Graphics2D g2, boolean filled);
     {
         if(filled)
         {
-            g2.draw(this.Shape);
-            g2.fill(this.Shape);
+            g2.draw(this);
+            g2.fill(this);
         }
         else
         {

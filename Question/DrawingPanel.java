@@ -24,7 +24,7 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
     
     private Color draw_color;
     ArrayList<Shape> shapes;
-
+    private JColorChooser chooser;
     /**
      * Default constructor for objects of class DrawingPanel
      * initalize all the instance variables
@@ -37,7 +37,7 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
         draw_color = new Color(67,198,219);
         this.setBackground(new Color(255,255,255));
         this.setSize(750,750);
-        
+        chooser = new JColorChooser(draw_color);
         
         
     }
@@ -47,8 +47,8 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
      */
     public void pickColor()
     {
-        JColorChooser chooser = new JColorChooser(draw_color);
         
+        chooser.showDialog(this,"Any Color you like", draw_color);
         draw_color = chooser.getColor();
         
     }

@@ -33,9 +33,11 @@ public class DrawingEditor extends JFrame
         setLayout(layout);
         
         
+        canvas = new DrawingPanel();
+        controls = new ControlPanel(canvas);
         
-        ControlPanel control = new ControlPanel();
-        this.add(control,layout.SOUTH);
+        this.add(canvas,layout.CENTER);
+        this.add(controls,layout.SOUTH);
         setSize(WIDTH,HEIGHT);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
