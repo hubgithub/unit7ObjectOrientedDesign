@@ -68,23 +68,7 @@ public abstract class Shape
      * check if a point is inside the shape
      */
     public abstract boolean isInside(Point2D.Double point);
-    {
-        double x_negative = center.getX() - radius;
-        double x_positive = center.getX() + radius;
-        
-        double y_negative = center.getY() - radius;
-        double y_positive = center.getY() + radius;
-        
-        double x = point.getX();
-        double y = point.getY();
-        
-        if((x < x_negative && x > x_positive) || (y < y_negative && y > y_positive))
-        {
-            return false;
-        }
-        
-        return true;
-    }
+
     
 //     /**
 //      * check if the point is on the border of the shape
@@ -114,18 +98,6 @@ public abstract class Shape
      * 
      */
     public abstract void draw(Graphics2D g2, boolean filled);
-    {
-        if(filled)
-        {
-            g2.draw(this);
-            g2.fill(this);
-        }
-        else
-        {
-            g2.draw(this);
-        }
-        
-        
-    }
+
     
 }

@@ -48,8 +48,15 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
     public void pickColor()
     {
         
-        chooser.showDialog(this,"Any Color you like", draw_color);
-        draw_color = chooser.getColor();
+        
+        Color col = chooser.showDialog(this,"Any Color you like", draw_color);
+        
+        if(col != null)
+        {
+            draw_color = col;
+        }
+        
+
         
     }
     
@@ -74,6 +81,10 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
      */
     public void paintComponent(Graphics g)
     {
+        // and draw all the shape that in the list
+        
+        
+        super.paintComponent(g);
         
     }
     

@@ -1,4 +1,5 @@
 import java.awt.geom.Point2D;
+
 /**
  * Write a description of class Circle here.
  * 
@@ -11,23 +12,24 @@ public class Circle extends Shape
     
     public boolean isInside(Point2D.Double point)
     {
+        
+        double x2_x = point.getX() - x;
+        double y2_y = point.getY() - y;
+        
+        double distance = Math.sqr(Math.pow(x2_x,2)+Math.pow(y2_y,2));
+        
+    
+    
+        
+        
+        if(distance > radius)
         {
-            double x_negative = center.getX() - radius;
-            double x_positive = center.getX() + radius;
-            
-            double y_negative = center.getY() - radius;
-            double y_positive = center.getY() + radius;
-            
-            double x = point.getX();
-            double y = point.getY();
-            
-            if((x < x_negative && x > x_positive) || (y < y_negative && y > y_positive))
-            {
-                return false;
-            }
-            
-            return true;
-        }        
+            return false;
+        }
+        
+        return true;
+                
     }
     
+    public draw();
 }

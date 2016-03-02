@@ -31,6 +31,7 @@ public class ControlPanel extends JPanel
     private JButton button_circle;
     private JPanel color_show;
     private DrawingPanel canvas;
+    
     /**
      * Default constructor for objects of class ControlPanel
      * Creat three buttons: Pick Color, Add Square, Add Circle
@@ -39,18 +40,23 @@ public class ControlPanel extends JPanel
     public ControlPanel(DrawingPanel canvas_99)
     {
         // initialise instance variables
+        ClickListener listener = new ClickListener();
         
         this.canvas = canvas_99;
 
         button_color = new JButton("Pick Color");
+        button_color.addActionListener(listener);
         
         color_show = new JPanel();
         color_show.setBackground(canvas.getColor());
         
         button_square = new JButton("Add Square");
+        button_square.addActionListener(listener);
 
         
         button_circle = new JButton("Add Circle");
+        button_circle.addActionListener(listener);
+        
 
         this.add(button_color);
         this.add(color_show);
@@ -58,7 +64,7 @@ public class ControlPanel extends JPanel
         this.add(button_circle);
         
         
-        
+  
         
         
     }
@@ -79,15 +85,17 @@ public class ControlPanel extends JPanel
             //which button was cliked
             String which = event.getActionCommand();
             
-            if(which == button_color.getName())
+            
+            if(which.equals("Pick Color"))
             {
                 canvas.pickColor();
+                color_show.setBackground(canvas.getColor());
             }
-            else if(which == button_square.getName())
+            else if(which.equals("Add Square"))
             {
                 
             }
-            else if(which == button_circle.getName())
+            else if(which.equals("Add Circle"))
             {
                 
             }
