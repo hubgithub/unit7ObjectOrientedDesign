@@ -5,6 +5,8 @@ import java.awt.Graphics2D;
 /**
  * Write a description of class Shape here.
  * abstract class
+ * Abstract methd: boolean isInside, void draw
+ * 
  * @author (your name) 
  * @version (a version number or a date)
  */
@@ -65,34 +67,13 @@ public abstract class Shape
     }
     
     /**
+     * Abstract Methd
      * check if a point is inside the shape
      */
     public abstract boolean isInside(Point2D.Double point);
-
-    
-//     /**
-//      * check if the point is on the border of the shape
-//      */
-//     public boolean isOnBorder(Point2D.Double point)
-//     {
-//         double x_negative = center.getX() - radius;
-//         double x_positive = center.getX() + radius;
-//         
-//         double y_negative = center.getY() - radius;
-//         double y_positive = center.getY() + radius;
-//         
-//         double x = point.getX();
-//         double y = point.getY();
-//         if((x == x_negative || x == x_positive) && (y == y_negative || y == y_positive))
-//         {
-//             return true;
-//         }
-//         
-//         return false;        
-//         
-//     }
     
     /**
+     * Abstract Methd
      * if filled is true: draw and fill the shape with color
      * else: draw the shape
      * 
