@@ -20,20 +20,16 @@ public class Circle extends Shape
     {
         super(center,radius,color);
         
-        //this.center = center;
-        
-        //this.radius = radius;
-        //this.color = color; 
-        //elli = new Ellipse2D.Double(center.getX(),center.getY(),radius*2,radius*2);
+        elli = new Ellipse2D.Double(center.getX(),center.getY(),radius*2,radius*2);
     }
     
     public boolean isInside(Point2D.Double point)
     {
         
-        double x2_x = point.getX() - x;
-        double y2_y = point.getY() - y;
+        double x2_x = point.getX() - center.getX();
+        double y2_y = point.getY() - center.getY();
         
-        double distance = Math.sqr(Math.pow(x2_x,2)+Math.pow(y2_y,2));
+        double distance = Math.sqrt(Math.pow(x2_x,2)+Math.pow(y2_y,2));
 
         if(distance > radius)
         {
