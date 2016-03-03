@@ -14,13 +14,17 @@ public class Circle extends Shape
     private double radius;
     private Color color;
     private Ellipse2D.Double elli;
-    private Point2D.Double center;    
-    public Circle(Point2D.Double center,double radius, Color color)
+    private Point2D.Double center;
+    
+    public Circle(Point2D.Double center,double radius,Color color)
     {
-        this.center = center;
-        this.radius = radius;
-        this.color = color; 
-        elli = new Ellipse2D.Double(center.getX(),center.getY(),radius*2,radius*2);
+        super(center,radius,color);
+        
+        //this.center = center;
+        
+        //this.radius = radius;
+        //this.color = color; 
+        //elli = new Ellipse2D.Double(center.getX(),center.getY(),radius*2,radius*2);
     }
     
     public boolean isInside(Point2D.Double point)
