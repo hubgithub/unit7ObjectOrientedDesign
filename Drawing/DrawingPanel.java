@@ -44,9 +44,9 @@ public class DrawingPanel extends JPanel
         shapes = new ArrayList<Shape>();
         
         Listener listener = new Listener();
-        MotionListener motionListener = new MotionListener();
+
         this.addMouseListener(listener);
-        this.addMouseMotionListener(motionListener);
+        this.addMouseMotionListener(listener);
     }
     
     /**
@@ -82,6 +82,8 @@ public class DrawingPanel extends JPanel
         
         activeShape = circle;
         shapes.add(circle);
+        
+
     }
     
     /**
@@ -129,12 +131,20 @@ public class DrawingPanel extends JPanel
     
 
     
-    class Listener implements MouseListener
+    class Listener implements MouseListener,MouseMotionListener
     {
         
         public void mouseClicked(MouseEvent e)
         {
-            
+        }
+        
+
+        
+        public void mouseExited(MouseEvent e){}
+
+        
+        public void mousePressed(MouseEvent e)
+        {
             boolean x = false;
             for(Shape shape : shapes)
             {
@@ -150,34 +160,17 @@ public class DrawingPanel extends JPanel
             {
                 activeShape = null;
             }
-            repaint();
+            repaint();        
         
         }
-        
 
         
-        public void mouseExited(MouseEvent e){}
-
-        
-        public void mousePressed(MouseEvent e){}
-        
-        public void mouseReleased(MouseEvent e){}
-        
-        public void mouseEntered(MouseEvent e){}
-        
-        public void moseExited(MouseEvent e){}
-        
-    }
-    
-    class MotionListener implements MouseMotionListener
-    {
         public void mouseDragged(MouseEvent e)
         {
 
             if(activeShape != null)
             {
                 activeShape.move(e.getX(),e.getY());
-                System.out.println("Dragged" + e.getX() + " " + e.getY());
                 repaint();
             }
             
@@ -187,6 +180,14 @@ public class DrawingPanel extends JPanel
         public void mouseMoved(MouseEvent e)
         {
        
-        }        
+        }            
+        public void mouseReleased(MouseEvent e){}
+        
+        public void mouseEntered(MouseEvent e){}
+        
+        public void moseExited(MouseEvent e){}
+        
     }
+    
+
 }
