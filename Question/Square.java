@@ -13,7 +13,7 @@ public class Square extends Shape
 {
     
     private Rectangle rect;
-
+    private String type;
     
 
     /**
@@ -23,7 +23,7 @@ public class Square extends Shape
     public Square(Point2D.Double location, double radius,Color color)
     {
         super(location,radius,color);
-
+        type = "Square";
         rect = new Rectangle((int)location.getX(),(int)location.getY(),(int)radius,(int)radius);
     }
 
@@ -66,7 +66,22 @@ public class Square extends Shape
         
         
     }
-
+    
+    public String getType()
+    {
+        return type;
+    }
+    
+    public boolean equals(Shape com_shape)
+        {
+        String type = com_shape.getType();
+        Point2D.Double point = com_shape.getCenter();
+        if(super.getCenter().equals(point) && super.getColor().equals(com_shape.getColor()) && super.getRadius() == com_shape.getRadius() &&type.equals(com_shape.getType()))
+        {
+            return true;
+        }
+        return false;
+    }
 }
 
 

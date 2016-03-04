@@ -43,7 +43,10 @@ public class DrawingPanel extends JPanel
         chooser = new JColorChooser(draw_color);
         shapes = new ArrayList<Shape>();
         
-        
+        Listener listener = new Listener();
+        MotionListener motionListener = new MotionListener();
+        this.addMouseListener(listener);
+        this.addMouseMotionListener(motionListener);
     }
     
     /**
@@ -71,8 +74,8 @@ public class DrawingPanel extends JPanel
      */
     public void addCircle()
     {
-        int randX = (int)(Math.random()*300);
-        int randY = (int)(Math.random()*300);
+        int randX = (int)(Math.random()*400);
+        int randY = (int)(Math.random()*400);
         Point2D.Double center = new Point2D.Double(randX,randY);
         
         Shape circle = new Circle(center,20,draw_color);
@@ -87,8 +90,8 @@ public class DrawingPanel extends JPanel
      */
     public void addSquare()
     {
-        int randX = (int)(Math.random()*300);
-        int randY = (int)(Math.random()*300);
+        int randX = (int)(Math.random()*400);
+        int randY = (int)(Math.random()*400);
         Point2D.Double center = new Point2D.Double(randX,randY);
         
         Shape square = new Square(center,20,draw_color);
@@ -96,6 +99,14 @@ public class DrawingPanel extends JPanel
         activeShape = square;
         shapes.add(square);
     }
+    
+    /**
+     * return current color
+     */
+    public Color getColor()
+    {
+        return draw_color;
+    }    
     
     /**
      * paint the shape
@@ -109,38 +120,40 @@ public class DrawingPanel extends JPanel
        System.out.println(shapes.size());
        for(Shape shape : shapes)
         {
-            shape.draw(g2,true);
+            
+            shape.draw(g2,!(activeShape.equals(shape)));
         }
         
         
     }
     
-    /**
-     * return current color
-     */
-    public Color getColor()
-    {
-        return draw_color;
-    }
+
     
-    class Listener implements MouseListener,MouseMotionListener
+    class Listener implements MouseListener
     {
         
         public void mouseClicked(MouseEvent e)
         {
             int x = e.getX();
             int y = e.getY();
+            Point2D.Double point = new Point2D.Double(x,y);
+            for(Shape shape : shapes)
+            {
+                if(shape.isInside(point))
+                {
+                    
+                    activeShape = shape;
+                    System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+                }
+            }
         
         
         }
         
-        public void mouseDragged(MouseEvent e)
-        {
-            int x = e.getX();
-            int y = e.getY();
-        }
+
         
-        public void mouseMoved(MouseEvent e){}
+        public void mouseExited(MouseEvent e){}
+
         
         public void mousePressed(MouseEvent e){}
         
@@ -151,5 +164,21 @@ public class DrawingPanel extends JPanel
         public void moseExited(MouseEvent e){}
         
     }
-
+    
+    class MotionListener implements MouseMotionListener
+    {
+        public void mouseDragged(MouseEvent e)
+        {
+            int x = e.getX();
+            int y = e.getY();
+            System.out.println("Dragged:" + x + "," + y);
+            
+            
+        }  
+        
+        public void mouseMoved(MouseEvent e)
+        {
+       
+        }        
+    }
 }

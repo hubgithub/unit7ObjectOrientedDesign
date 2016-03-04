@@ -73,14 +73,25 @@ public abstract class Shape
     {
         return color;
     }
+    
     /**
-     * Abstract Methd
+     * abstract method, return what type of shape is this
+     */
+    public abstract String getType();
+
+    /**
+     * abstract method
+     */
+    public abstract boolean equals(Shape com_shape);
+
+    /**
+     * Abstract Method
      * check if a point is inside the shape
      */
     public abstract boolean isInside(Point2D.Double point);
     
     /**
-     * Abstract Methd
+     * Abstract Method
      * if filled is true: draw and fill the shape with color
      * else: draw the shape
      * 
