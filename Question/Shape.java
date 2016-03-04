@@ -67,6 +67,13 @@ public abstract class Shape
     }
     
     /**
+     * get color
+     */
+    public Color getColor()
+    {
+        return color;
+    }
+    /**
      * Abstract Methd
      * check if a point is inside the shape
      */

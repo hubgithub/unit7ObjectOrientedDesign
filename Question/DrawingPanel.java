@@ -6,9 +6,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.Random;
-import java.awt.Shape;
+import java.lang.Math;
 import javax.swing.JColorChooser;
 import java.awt.geom.Ellipse2D;
 import java.awt.Rectangle;
@@ -21,11 +21,12 @@ import java.awt.Rectangle;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionListener
+public class DrawingPanel extends JPanel 
 {
     
     private Color draw_color;
-    ArrayList<Shape> shapes;
+    private ArrayList<Shape> shapes;
+    private Shape activeShape;
     private JColorChooser chooser;
     /**
      * Default constructor for objects of class DrawingPanel
@@ -38,8 +39,9 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
         
         draw_color = new Color(67,198,219);
         this.setBackground(new Color(255,255,255));
-        this.setSize(750,750);
+        this.setSize(480,480);
         chooser = new JColorChooser(draw_color);
+        shapes = new ArrayList<Shape>();
         
         
     }
@@ -50,6 +52,7 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
     public void pickColor()
     {
         
+
         
         Color col = chooser.showDialog(this,"Any Color you like", draw_color);
         
@@ -64,19 +67,34 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
     
     /**
      * create a new circle
+     * add square to shapes
      */
     public void addCircle()
     {
+        int randX = (int)(Math.random()*300);
+        int randY = (int)(Math.random()*300);
+        Point2D.Double center = new Point2D.Double(randX,randY);
         
+        Shape circle = new Circle(center,20,draw_color);
         
+        activeShape = circle;
+        shapes.add(circle);
     }
     
     /**
      * creat a new square
+     * add square to shapes
      */
     public void addSquare()
     {
+        int randX = (int)(Math.random()*300);
+        int randY = (int)(Math.random()*300);
+        Point2D.Double center = new Point2D.Double(randX,randY);
         
+        Shape square = new Square(center,20,draw_color);
+        
+        activeShape = square;
+        shapes.add(square);
     }
     
     /**
@@ -85,9 +103,15 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
     public void paintComponent(Graphics g)
     {
         // and draw all the shape that in the list
-        
-        
         super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D)g;
+        
+       System.out.println(shapes.size());
+       for(Shape shape : shapes)
+        {
+            shape.draw(g2,true);
+        }
+        
         
     }
     
@@ -98,6 +122,34 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
     {
         return draw_color;
     }
-
+    
+    class Listener implements MouseListener,MouseMotionListener
+    {
+        
+        public void mouseClicked(MouseEvent e)
+        {
+            int x = e.getX();
+            int y = e.getY();
+        
+        
+        }
+        
+        public void mouseDragged(MouseEvent e)
+        {
+            int x = e.getX();
+            int y = e.getY();
+        }
+        
+        public void mouseMoved(MouseEvent e){}
+        
+        public void mousePressed(MouseEvent e){}
+        
+        public void mouseReleased(MouseEvent e){}
+        
+        public void mouseEntered(MouseEvent e){}
+        
+        public void moseExited(MouseEvent e){}
+        
+    }
 
 }

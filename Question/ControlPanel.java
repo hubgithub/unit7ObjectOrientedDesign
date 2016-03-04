@@ -93,13 +93,14 @@ public class ControlPanel extends JPanel
             }
             else if(which.equals("Add Square"))
             {
-                
+                canvas.addSquare();
             }
             else if(which.equals("Add Circle"))
             {
-                
+                canvas.addCircle();
             }
             
+            canvas.repaint();
         }
         
 
