@@ -18,8 +18,6 @@ import java.awt.Rectangle;
  * Pick Color
  * Drawing and paint all the shapes
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class DrawingPanel extends JPanel 
 {
@@ -128,19 +126,23 @@ public class DrawingPanel extends JPanel
     }
     
 
-    
+    /**
+     * implements MouseListener
+     * select the shape that the mouse clicked
+     */
     class Listener implements MouseListener
     {
         
         public void mouseClicked(MouseEvent e)
-        {
-        }
+        {}
         
 
         
         public void mouseExited(MouseEvent e){}
 
-        
+        /**
+         * if mousePressed on the shape, set activeShape = shape
+         */
         public void mousePressed(MouseEvent e)
         {
             
@@ -171,8 +173,15 @@ public class DrawingPanel extends JPanel
         
     }
     
+    /**
+     * implements MouseMothionListener
+     * move shape to a place
+     */
     class MotionListener implements MouseMotionListener
     {
+        /**
+         * dragged shape to any where in the frame
+         */
         public void mouseDragged(MouseEvent e)
         {
 

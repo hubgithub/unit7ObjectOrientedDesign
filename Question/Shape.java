@@ -80,7 +80,7 @@ public abstract class Shape
     public abstract String getType();
 
     /**
-     * abstract method
+     * abstract method,return true if two shapes are equals each other
      */
     public abstract boolean equals(Shape com_shape);
 

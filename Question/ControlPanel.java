@@ -13,7 +13,7 @@ import java.awt.Rectangle;
 /**
  * 
  * extends JPanel
- * Create buttons, and track of all mouse movement
+ * Create buttons, and if buttons were clicked call methods
  * 
  * 
  * @author (Heng Li) 

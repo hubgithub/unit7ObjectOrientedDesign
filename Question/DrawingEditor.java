@@ -4,11 +4,11 @@ import java.awt.*;
 import java.awt.BorderLayout;
 
 /**
+ * Viewer class of the Drawing lab
  * Extends JFrame
+ * set layout, create DrawingPanel, create ControlPanel, and create a JFrame
  * 
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class DrawingEditor extends JFrame
 {

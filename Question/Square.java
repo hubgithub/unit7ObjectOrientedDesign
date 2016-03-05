@@ -6,8 +6,6 @@ import java.awt.Graphics2D;
  * extends abstract class Shape
  * Override abstract methd: boolean isInside,void draw
  * A square shape
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class Square extends Shape
 {
@@ -18,7 +16,7 @@ public class Square extends Shape
 
     /**
      * Constructor for objects of class Square
-     * 
+     * call super class constructor, create a Rectangle
      */
     public Square(Point2D.Double location, double radius,Color color)
     {
@@ -66,7 +64,9 @@ public class Square extends Shape
         
         
     }
-    
+    /**
+     * return type
+     */
     public String getType()
     {
         return type;
