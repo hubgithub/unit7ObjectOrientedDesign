@@ -6,9 +6,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
-import java.util.Random;
-import java.awt.Shape;
+import java.lang.Math;
 import javax.swing.JColorChooser;
 import java.awt.geom.Ellipse2D;
 import java.awt.Rectangle;
@@ -18,14 +18,13 @@ import java.awt.Rectangle;
  * Pick Color
  * Drawing and paint all the shapes
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
-public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionListener
+public class DrawingPanel extends JPanel 
 {
     
     private Color draw_color;
-    ArrayList<Shape> shapes;
+    private ArrayList<Shape> shapes;
+    private Shape activeShape;
     private JColorChooser chooser;
     /**
      * Default constructor for objects of class DrawingPanel
@@ -38,10 +37,14 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
         
         draw_color = new Color(67,198,219);
         this.setBackground(new Color(255,255,255));
-        this.setSize(750,750);
+        this.setSize(480,480);
         chooser = new JColorChooser(draw_color);
+        shapes = new ArrayList<Shape>();
         
-        
+        Listener listener = new Listener();
+        MotionListener motionListener = new MotionListener();
+        this.addMouseListener(listener);
+        this.addMouseMotionListener(motionListener);
     }
     
     /**
@@ -50,6 +53,7 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
     public void pickColor()
     {
         
+
         
         Color col = chooser.showDialog(this,"Any Color you like", draw_color);
         
@@ -64,31 +68,34 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
     
     /**
      * create a new circle
+     * add square to shapes
      */
     public void addCircle()
     {
+        int randX = (int)(Math.random()*400);
+        int randY = (int)(Math.random()*400);
+        Point2D.Double center = new Point2D.Double(randX,randY);
         
+        Shape circle = new Circle(center,20,draw_color);
         
+        activeShape = circle;
+        shapes.add(circle);
     }
     
     /**
      * creat a new square
+     * add square to shapes
      */
     public void addSquare()
     {
+        int randX = (int)(Math.random()*400);
+        int randY = (int)(Math.random()*400);
+        Point2D.Double center = new Point2D.Double(randX,randY);
         
-    }
-    
-    /**
-     * paint the shape
-     */
-    public void paintComponent(Graphics g)
-    {
-        // and draw all the shape that in the list
+        Shape square = new Square(center,20,draw_color);
         
-        
-        super.paintComponent(g);
-        
+        activeShape = square;
+        shapes.add(square);
     }
     
     /**
@@ -97,7 +104,99 @@ public class DrawingPanel extends JPanel //implements MouseListener,MouseMotionL
     public Color getColor()
     {
         return draw_color;
+    }    
+    
+    /**
+     * paint the shape
+     */
+    public void paintComponent(Graphics g)
+    {
+        // and draw all the shape that in the list
+        super.paintComponent(g);
+        Graphics2D g2 = (Graphics2D)g;
+        
+       System.out.println(shapes.size());
+       for(Shape shape : shapes)
+        {
+            
+            shape.draw(g2,!(activeShape.equals(shape)));
+        }
+        
+        
     }
+    
 
+    /**
+     * implements MouseListener
+     * select the shape that the mouse clicked
+     */
+    class Listener implements MouseListener
+    {
+        
+        public void mouseClicked(MouseEvent e)
+        {}
+        
 
+        
+        public void mouseExited(MouseEvent e){}
+
+        /**
+         * if mousePressed on the shape, set activeShape = shape
+         */
+        public void mousePressed(MouseEvent e)
+        {
+            
+            boolean x = false;
+            for(Shape shape : shapes)
+            {
+                if(shape.isInside(new Point2D.Double(e.getX(),e.getY())))
+                {
+                    x = true;
+                    activeShape = shape;
+
+                }
+            }
+            
+            if(!x)
+            {
+                activeShape = null;
+            }
+            
+            repaint();            
+        }
+        
+        public void mouseReleased(MouseEvent e){}
+        
+        public void mouseEntered(MouseEvent e){}
+        
+        public void moseExited(MouseEvent e){}
+        
+    }
+    
+    /**
+     * implements MouseMothionListener
+     * move shape to a place
+     */
+    class MotionListener implements MouseMotionListener
+    {
+        /**
+         * dragged shape to any where in the frame
+         */
+        public void mouseDragged(MouseEvent e)
+        {
+
+            if(activeShape != null)
+            {
+                activeShape.move(e.getX(),e.getY());
+                repaint();
+            }
+            
+            
+        }  
+        
+        public void mouseMoved(MouseEvent e)
+        {
+       
+        }        
+    }
 }

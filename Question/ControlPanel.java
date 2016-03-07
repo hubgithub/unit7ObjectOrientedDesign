@@ -13,7 +13,7 @@ import java.awt.Rectangle;
 /**
  * 
  * extends JPanel
- * Create buttons, and track of all mouse movement
+ * Create buttons, and if buttons were clicked call methods
  * 
  * 
  * @author (Heng Li) 
@@ -93,13 +93,14 @@ public class ControlPanel extends JPanel
             }
             else if(which.equals("Add Square"))
             {
-                
+                canvas.addSquare();
             }
             else if(which.equals("Add Circle"))
             {
-                
+                canvas.addCircle();
             }
             
+            canvas.repaint();
         }
         
 

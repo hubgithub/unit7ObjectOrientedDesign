@@ -4,17 +4,17 @@ import java.awt.*;
 import java.awt.BorderLayout;
 
 /**
+ * Viewer class of the Drawing lab
  * Extends JFrame
+ * set layout, create DrawingPanel, create ControlPanel, and create a JFrame
  * 
  * 
- * @author (your name) 
- * @version (a version number or a date)
  */
 public class DrawingEditor extends JFrame
 {
     
-    private final int WIDTH = 800;
-    private final int HEIGHT = 800;
+    private final int WIDTH = 500;
+    private final int HEIGHT = 500;
     
     private ControlPanel controls;
     private DrawingPanel canvas;
@@ -28,7 +28,7 @@ public class DrawingEditor extends JFrame
     {
         // initialise instance variables
         super("DrawingEditor");
-        BorderLayout layout = new BorderLayout(10,195);
+        BorderLayout layout = new BorderLayout(10,10);
         
         setLayout(layout);
         
