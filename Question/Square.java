@@ -38,7 +38,6 @@ public class Square extends Shape
         
         if(rect.contains(point.getX(),point.getY()))
         {
-            rect = new Rectangle((int)super.getCenter().getX(),(int)super.getCenter().getY(),(int)super.getRadius(),(int)super.getRadius());
             return true;
         }
         

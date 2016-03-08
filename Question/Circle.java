@@ -26,7 +26,6 @@ public class Circle extends Shape
         
         type = "Circle";
         elli = new Ellipse2D.Double(center.getX(),center.getY(),radius*2,radius*2);
-        
     }
     
     /**
@@ -37,21 +36,15 @@ public class Circle extends Shape
         
         
         elli = new Ellipse2D.Double(super.getCenter().getX(),super.getCenter().getY(),super.getRadius()*2,super.getRadius()*2);
-<<<<<<< HEAD
-        if((Math.sqrt(Math.pow(point.getX() - super.getCenter().getX(),2) + Math.pow(point.getY() - super.getCenter().getY(),2))) < super.getRadius())
-        {
-=======
         if(elli.contains(point.getX(),point.getY()))
         {
 
->>>>>>> origin/master
             return true;
         }
         
-        
         return false;
 
-
+        //Ellipse2D.Double circ = new Ellipse2D.Double(getCenter().getX())
                 
     }
     
