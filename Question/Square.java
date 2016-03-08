@@ -43,6 +43,7 @@ public class Square extends Shape
         
         if((point_x < x_right && point_x > x) && (point_y < y_down && point_y > y))
         {
+            rect = new Rectangle((int)super.getCenter().getX(),(int)super.getCenter().getY(),(int)super.getRadius(),(int)super.getRadius());
             return true;
         }
         

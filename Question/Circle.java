@@ -26,6 +26,7 @@ public class Circle extends Shape
         
         type = "Circle";
         elli = new Ellipse2D.Double(center.getX(),center.getY(),radius*2,radius*2);
+        
     }
     
     /**
@@ -33,17 +34,18 @@ public class Circle extends Shape
      */
     public boolean isInside(Point2D.Double point)
     {
-
         
-        if((Math.sqrt(Math.pow(point.getX() - super.getCenter().getX(),2) + Math.pow(point.getY() - super.getCenter().getY(),2))) > super.getRadius())
+        
+        elli = new Ellipse2D.Double(super.getCenter().getX(),super.getCenter().getY(),super.getRadius()*2,super.getRadius()*2);
+        if((Math.sqrt(Math.pow(point.getX() - super.getCenter().getX(),2) + Math.pow(point.getY() - super.getCenter().getY(),2))) < super.getRadius())
         {
-            System.out.println("Point is in the circle!!!");
             return true;
         }
         
+        
         return false;
 
-        //Ellipse2D.Double circ = new Ellipse2D.Double(getCenter().getX())
+
                 
     }
     
