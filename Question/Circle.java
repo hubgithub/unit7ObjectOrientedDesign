@@ -37,8 +37,14 @@ public class Circle extends Shape
         
         
         elli = new Ellipse2D.Double(super.getCenter().getX(),super.getCenter().getY(),super.getRadius()*2,super.getRadius()*2);
+<<<<<<< HEAD
         if((Math.sqrt(Math.pow(point.getX() - super.getCenter().getX(),2) + Math.pow(point.getY() - super.getCenter().getY(),2))) < super.getRadius())
         {
+=======
+        if(elli.contains(point.getX(),point.getY()))
+        {
+
+>>>>>>> origin/master
             return true;
         }
         
@@ -55,14 +61,18 @@ public class Circle extends Shape
     public void draw(Graphics2D g2, boolean filled)
     {
         g2.setColor(super.getColor());
-        g2.draw(elli);
+        
+        elli = new Ellipse2D.Double(super.getCenter().getX(),super.getCenter().getY(),super.getRadius()*2,super.getRadius()*2);
         
         if(filled)
         {
             
             g2.fill(elli);
         }
-        
+        else
+        {
+            g2.draw(elli);
+        }
         
     }
     

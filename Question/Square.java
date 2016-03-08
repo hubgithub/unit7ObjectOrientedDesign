@@ -6,6 +6,8 @@ import java.awt.Graphics2D;
  * extends abstract class Shape
  * Override abstract methd: boolean isInside,void draw
  * A square shape
+ * @author (your name) 
+ * @version (a version number or a date)
  */
 public class Square extends Shape
 {
@@ -16,7 +18,7 @@ public class Square extends Shape
 
     /**
      * Constructor for objects of class Square
-     * call super class constructor, create a Rectangle
+     * 
      */
     public Square(Point2D.Double location, double radius,Color color)
     {
@@ -32,16 +34,9 @@ public class Square extends Shape
      */
     public boolean isInside(Point2D.Double point)
     {
-        double point_x = point.getX();
-        double point_y = point.getY();
+        rect = new Rectangle((int)super.getCenter().getX(),(int)super.getCenter().getY(),(int)super.getRadius(),(int)super.getRadius());
         
-        double x = super.getCenter().getX();
-        double y = super.getCenter().getY();
-        
-        double x_right = x + super.getRadius();
-        double y_down = y + super.getRadius();
-        
-        if((point_x < x_right && point_x > x) && (point_y < y_down && point_y > y))
+        if(rect.contains(point.getX(),point.getY()))
         {
             rect = new Rectangle((int)super.getCenter().getX(),(int)super.getCenter().getY(),(int)super.getRadius(),(int)super.getRadius());
             return true;
@@ -51,12 +46,14 @@ public class Square extends Shape
     }
     
 
+
     /**
      * draw the square
      */
     public void draw(Graphics2D g2, boolean filled)
     {
         g2.setColor(super.getColor());
+        rect = new Rectangle((int)super.getCenter().getX(),(int)super.getCenter().getY(),(int)super.getRadius(),(int)super.getRadius());
         g2.draw(rect);
         if(filled)
         {
@@ -65,9 +62,7 @@ public class Square extends Shape
         
         
     }
-    /**
-     * return type
-     */
+    
     public String getType()
     {
         return type;
@@ -86,23 +81,3 @@ public class Square extends Shape
 }
 
 
-// 
-//     public boolean inOnBorder(Point2D.Double point)
-//     {
-//         double point_x = point.getX();
-//         double point_y = point.getY();
-//         
-//         double x = location.getX();
-//         double y = location.getY();
-//         
-//         double x_right = x + width;
-//         double y_down = y + height;
-//         // need fix
-//         if((point_x < x_right && point_x > x) && (point_y < y_down && point_y > y))
-//         {
-//             return true;
-//         }
-//         return false;
-//         
-//         
-//         
